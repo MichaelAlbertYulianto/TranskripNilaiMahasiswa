@@ -114,14 +114,16 @@ class PageController extends Controller
     function updatePassword(Request $request)
     {
         $user = Auth::user();
-        // return bcrypt($request->newPassword);
-        if ($request->newPassword == $request->confirmPassword) {
-            $user->password = bcrypt($request->newPassword);
-            $user->save();
-            return redirect('/changePassword')->with('info', 'Password Successfully Changed');
+        if (Auth::user()->password ?? "" == $request->oldPassword) {
+            if ($request->newPassword == $request->confirmPassword) {
+                $user->password = bcrypt($request->newPassword);
+                $user->save();
+                return redirect('/changePassword')->with('info', 'Password Successfully Changed');
+            } else {
+                return redirect('/changePassword')->with('info', 'Password Does Not Match');
+            }
         } else {
-            return redirect('/changePassword')->with('info', 'Password Does Not Match');
+            return redirect('/changePassword')->with('info', 'Old Password Does Not Match');
         }
-
     }
 }

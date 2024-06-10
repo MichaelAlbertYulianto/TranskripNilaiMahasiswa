@@ -17,7 +17,7 @@ class AuthController extends Controller
                 'password' => $request->password
             ])
         ) {
-            return redirect('/');
+            return redirect('/')->with('alert', 'Wrong Email or Password');
         } else {
             return redirect('/Home');
         }

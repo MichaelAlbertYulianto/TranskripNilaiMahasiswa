@@ -10,6 +10,10 @@
             <form action="/updatePassword" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
+                    <label for="oldPassword" class="form-label">Old Password</label>
+                    <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+                </div>
+                <div class="mb-3">
                     <label for="newPassword" class="form-label">New Password</label>
                     <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                 </div>
