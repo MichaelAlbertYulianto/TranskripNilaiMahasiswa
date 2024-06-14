@@ -19,13 +19,16 @@
                 </div>
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                        required>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-            @if (session('info'))
+            @if (session('info') == 'Password Successfully Changed')
+                <div class="alert alert-success" role="alert">
+                    {{ session('info') }}
+                </div>
+            @elseif (session('info') == 'Password Does Not Match' || session('info') == 'Old Password Does Not Match')
                 <div class="alert alert-danger" role="alert">
                     {{ session('info') }}
                 </div>

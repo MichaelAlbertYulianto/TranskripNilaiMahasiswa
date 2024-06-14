@@ -44,6 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/login', 'AuthController@checkLogin');
+    Route::post('/login', 'AuthController@checkLogin');
     Route::get('/', 'PageController@Login')->name('login');
 });
